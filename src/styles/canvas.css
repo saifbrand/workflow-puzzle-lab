@@ -1,0 +1,359 @@
+/* =========================================================================
+   Canvas and workflow nodes
+   ========================================================================= */
+
+.canvas {
+  position: relative;
+  min-height: 0;
+  height: 100%;
+  background:
+    radial-gradient(1100px 620px at 50% -12%, #141826 0%, transparent 68%),
+    var(--bg-0);
+}
+
+.canvas .react-flow__attribution {
+  display: none;
+}
+
+.canvas .react-flow__controls {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-2);
+}
+
+.canvas .react-flow__controls-button {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-3);
+  fill: var(--ink-1);
+}
+
+.canvas .react-flow__controls-button:hover {
+  background: var(--bg-4);
+  fill: var(--ink-0);
+}
+
+.canvas .react-flow__minimap {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-1);
+  overflow: hidden;
+}
+
+.canvas .react-flow__edge-path {
+  stroke: #2b3244;
+  stroke-width: 2;
+}
+
+.canvas .react-flow__edge.is-active .react-flow__edge-path {
+  stroke: var(--sky);
+  stroke-width: 2.5;
+  filter: drop-shadow(0 0 5px rgb(56 189 248 / 0.5));
+}
+
+.canvas .react-flow__edge.is-done .react-flow__edge-path {
+  stroke: #2b6350;
+}
+
+.canvas .react-flow__edge.is-skipped .react-flow__edge-path {
+  stroke: #33384a;
+  stroke-dasharray: 4 5;
+}
+
+/* ------------------------------------------------------------------ node */
+
+.node {
+  position: relative;
+  width: 340px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: linear-gradient(180deg, var(--bg-3), var(--bg-2));
+  box-shadow: var(--shadow-2);
+  cursor: pointer;
+  transition:
+    border-color 0.16s ease,
+    box-shadow 0.16s ease,
+    transform 0.12s ease;
+}
+
+.node:hover {
+  border-color: #313949;
+  transform: translateY(-1px);
+}
+
+.node--selected {
+  border-color: var(--indigo);
+  box-shadow:
+    var(--shadow-2),
+    0 0 0 1px var(--indigo),
+    0 0 22px rgb(129 140 248 / 0.2);
+}
+
+/* Family accent stripe down the left edge */
+.node::before {
+  content: '';
+  position: absolute;
+  inset: 10px auto 10px 0;
+  width: 3px;
+  border-radius: 3px;
+  background: var(--node-accent, var(--slate));
+  opacity: 0.85;
+}
+
+.node--violet {
+  --node-accent: var(--violet);
+}
+.node--amber {
+  --node-accent: var(--amber);
+}
+.node--teal {
+  --node-accent: var(--teal);
+}
+.node--sky {
+  --node-accent: var(--sky);
+}
+.node--emerald {
+  --node-accent: var(--emerald);
+}
+.node--rose {
+  --node-accent: var(--rose);
+}
+.node--indigo {
+  --node-accent: var(--indigo);
+}
+.node--slate {
+  --node-accent: var(--slate);
+}
+
+.node__head {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 12px 10px 15px;
+}
+
+.node__glyph {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--bg-4);
+  font-size: 14px;
+  line-height: 1;
+}
+
+.node__titles {
+  flex: 1;
+  min-width: 0;
+}
+
+.node__title {
+  color: var(--ink-0);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.node__kind {
+  color: var(--ink-3);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.node__status {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-size: 11px;
+}
+
+.node__body {
+  padding: 0 12px 10px 15px;
+  color: var(--ink-2);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.node__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 0 12px 11px 15px;
+}
+
+.node__tools {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: none;
+  gap: 3px;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg-4);
+  box-shadow: var(--shadow-2);
+}
+
+.node:hover .node__tools,
+.node--selected .node__tools {
+  display: flex;
+}
+
+.node__tool {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border: none;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--ink-2);
+  font-size: 12px;
+  line-height: 1;
+  transition:
+    background 0.12s ease,
+    color 0.12s ease;
+}
+
+.node__tool:hover:not(:disabled) {
+  background: var(--bg-2);
+  color: var(--ink-0);
+}
+
+.node__tool:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.node__tool--danger:hover:not(:disabled) {
+  background: #3a1c25;
+  color: var(--rose);
+}
+
+/* ---------------------------------------------------------- node status */
+
+.node--running {
+  border-color: var(--sky);
+  animation: pulse-ring 1.6s ease-out infinite;
+}
+
+.node--completed {
+  border-color: #235143;
+}
+
+.node--recovered {
+  border-color: #2f6b4f;
+}
+
+.node--failed {
+  border-color: #6b2f3d;
+  background: linear-gradient(180deg, #241620, var(--bg-2));
+}
+
+.node--paused {
+  border-color: var(--indigo);
+  background: linear-gradient(180deg, #1c1d33, var(--bg-2));
+}
+
+.node--safelyStopped {
+  border-color: #6b4a2f;
+}
+
+.node--skipped {
+  opacity: 0.48;
+}
+
+.node__status--completed {
+  background: #12362a;
+  color: var(--ok);
+}
+.node__status--recovered {
+  background: #123626;
+  color: var(--ok);
+}
+.node__status--failed {
+  background: #3a1620;
+  color: var(--bad);
+}
+.node__status--running {
+  background: #10293a;
+  color: var(--info);
+}
+.node__status--retrying {
+  background: #10293a;
+  color: var(--info);
+}
+.node__status--paused {
+  background: #1d1e38;
+  color: var(--pause);
+}
+.node__status--safelyStopped {
+  background: #372515;
+  color: var(--warn);
+}
+.node__status--skipped {
+  background: var(--bg-4);
+  color: var(--ink-3);
+}
+
+/* React Flow handles: present for the chain, but visually quiet */
+.canvas .react-flow__handle {
+  width: 7px;
+  height: 7px;
+  border: 2px solid var(--bg-1);
+  background: #39415a;
+}
+
+.canvas .react-flow__handle-top {
+  top: -4px;
+}
+.canvas .react-flow__handle-bottom {
+  bottom: -4px;
+}
+
+/* ------------------------------------------------------- canvas overlays */
+
+.canvas__hud {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgb(18 21 29 / 0.86);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-2);
+  font-size: 12px;
+  color: var(--ink-1);
+}
+
+.canvas__hud strong {
+  color: var(--ink-0);
+  font-weight: 600;
+}
+
+.canvas__empty {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 32px;
+  color: var(--ink-3);
+  text-align: center;
+  pointer-events: none;
+}

@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1260" height="920" viewBox="0 0 1260 920" font-family="Inter, Segoe UI, system-ui, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5f6779"/>
+    </marker>
+    <marker id="arrowDim" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a5262"/>
+    </marker>
+    <style>
+      .grp { fill: #12151d; stroke: #232937; stroke-width: 1.5; rx: 12; }
+      .grpLabel { fill: #8b93a5; font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; }
+      .box { rx: 9; stroke-width: 1.5; }
+      .t { fill: #f2f4f8; font-size: 13px; font-weight: 600; }
+      .s { fill: #8b93a5; font-size: 11px; }
+      .edge { stroke: #5f6779; stroke-width: 1.6; fill: none; marker-end: url(#arrow); }
+      .edgeDim { stroke: #4a5262; stroke-width: 1.4; fill: none; stroke-dasharray: 5 4; marker-end: url(#arrowDim); }
+      .edgeLabel { fill: #5f6779; font-size: 10.5px; font-style: italic; }
+    </style>
+  </defs>
+
+  <rect width="1260" height="920" fill="#0d0f15"/>
+
+  <text x="40" y="42" fill="#f2f4f8" font-size="19" font-weight="700">AI Workflow Puzzle Builder</text>
+  <text x="40" y="63" fill="#8b93a5" font-size="12.5">Architecture. Nothing leaves the browser unless a user connects their own model.</text>
+
+  <!-- ============ Workflow definitions ============ -->
+  <rect class="grp" x="40" y="92" width="292" height="214"/>
+  <text class="grpLabel" x="58" y="116">Workflow definitions</text>
+
+  <rect class="box" x="58" y="128" width="256" height="52" fill="#141a20" stroke="#1d4a3a"/>
+  <text class="t" x="72" y="149">8 seeded puzzles</text>
+  <text class="s" x="72" y="166">inputs · criteria · failure scenarios</text>
+
+  <rect class="box" x="58" y="190" width="256" height="46" fill="#141a20" stroke="#1d4a3a"/>
+  <text class="t" x="72" y="209">Block library</text>
+  <text class="s" x="72" y="225">11 kinds, 3 families</text>
+
+  <rect class="box" x="58" y="246" width="256" height="46" fill="#141a20" stroke="#1d4a3a"/>
+  <text class="t" x="72" y="265">Zod schema registry</text>
+  <text class="s" x="72" y="281">8 schemas, incl. cross-field rules</text>
+
+  <text class="s" x="58" y="326" font-style="italic">Committed data, never generated.</text>
+
+  <!-- ============ Builder UI ============ -->
+  <rect class="grp" x="380" y="92" width="452" height="214"/>
+  <text class="grpLabel" x="398" y="116">Builder UI (React)</text>
+
+  <rect class="box" x="398" y="128" width="206" height="46" fill="#191a2c" stroke="#2e2f5a"/>
+  <text class="t" x="412" y="147">Workflow canvas</text>
+  <text class="s" x="412" y="163">nodes mirror the live trace</text>
+
+  <rect class="box" x="612" y="128" width="202" height="46" fill="#191a2c" stroke="#2e2f5a"/>
+  <text class="t" x="626" y="147">Step inspector</text>
+  <text class="s" x="626" y="163">config + reliability policy</text>
+
+  <rect class="box" x="398" y="184" width="206" height="42" fill="#191a2c" stroke="#2e2f5a"/>
+  <text class="t" x="412" y="203">Block palette</text>
+  <text class="s" x="412" y="218">per-puzzle subset</text>
+
+  <rect class="box" x="612" y="184" width="202" height="42" fill="#201a0e" stroke="#4a3a1d"/>
+  <text class="t" x="626" y="203">Failure switches</text>
+  <text class="s" x="626" y="218">deterministic, per attempt</text>
+
+  <rect class="box" x="398" y="236" width="416" height="46" fill="#1c1d33" stroke="#4f57a8"/>
+  <text class="t" x="412" y="255">Human review dialog</text>
+  <text class="s" x="412" y="271">approve · edit · reject — the run is genuinely paused</text>
+
+  <!-- ============ Store ============ -->
+  <rect class="box" x="380" y="336" width="452" height="52" fill="#12151d" stroke="#313949"/>
+  <text class="t" x="398" y="358">Store (zustand)</text>
+  <text class="s" x="398" y="375">workflow being edited · live run · reliability report · solved set</text>
+
+  <!-- ============ Execution engine ============ -->
+  <rect class="grp" x="380" y="418" width="452" height="256"/>
+  <text class="grpLabel" x="398" y="442">Execution engine</text>
+
+  <rect class="box" x="398" y="454" width="416" height="48" fill="#1a1023" stroke="#6d5aa8"/>
+  <text class="t" x="412" y="474">runWorkflow</text>
+  <text class="s" x="412" y="491">linear walk over the chain · attempt loop per step</text>
+
+  <rect class="box" x="398" y="512" width="204" height="44" fill="#141820" stroke="#2b3244"/>
+  <text class="t" x="412" y="531">Failure injector</text>
+  <text class="s" x="412" y="547">per step, per attempt</text>
+
+  <rect class="box" x="610" y="512" width="204" height="44" fill="#101a17" stroke="#22876180"/>
+  <text class="t" x="624" y="531">Validation layer</text>
+  <text class="s" x="624" y="547">in-loop and standalone</text>
+
+  <rect class="box" x="398" y="566" width="204" height="44" fill="#141820" stroke="#2b3244"/>
+  <text class="t" x="412" y="585">Recovery</text>
+  <text class="s" x="412" y="601">retry · fallback · onError</text>
+
+  <rect class="box" x="610" y="566" width="204" height="44" fill="#1c1d33" stroke="#4f57a8"/>
+  <text class="t" x="624" y="585">Human gate</text>
+  <text class="s" x="624" y="601">awaits a real decision</text>
+
+  <text class="s" x="398" y="638" font-style="italic">A step declaring a schema validates itself inside the attempt loop,</text>
+  <text class="s" x="398" y="654" font-style="italic">which is what lets a retry or a fallback rescue schema drift.</text>
+
+  <!-- ============ Providers ============ -->
+  <rect class="grp" x="380" y="704" width="452" height="176"/>
+  <text class="grpLabel" x="398" y="728">Provider layer</text>
+
+  <rect class="box" x="398" y="740" width="204" height="48" fill="#141820" stroke="#2b3244"/>
+  <text class="t" x="412" y="760">Mock models</text>
+  <text class="s" x="412" y="777">healthy + corrupted, canned</text>
+
+  <rect class="box" x="610" y="740" width="204" height="48" fill="#141820" stroke="#2b3244"/>
+  <text class="t" x="624" y="760">Simulated tools</text>
+  <text class="s" x="624" y="777">6 services, documented faults</text>
+
+  <rect class="box" x="398" y="800" width="416" height="52" fill="#100f14" stroke="#3a3550" stroke-dasharray="5 4"/>
+  <text class="t" x="412" y="821">Optional live model</text>
+  <text class="s" x="412" y="838">user's own key · healthy calls only · falls back to mock on any error</text>
+
+  <!-- ============ Outputs ============ -->
+  <rect class="box" x="884" y="418" width="336" height="86" fill="#12151d" stroke="#313949"/>
+  <text class="t" x="902" y="440">Execution trace</text>
+  <text class="s" x="902" y="458">every step: input, output, each attempt,</text>
+  <text class="s" x="902" y="474">validation result, recovery action,</text>
+  <text class="s" x="902" y="490">and the human decision if there was one</text>
+
+  <rect class="box" x="884" y="520" width="336" height="106" fill="#101f1a" stroke="#1d4a3a"/>
+  <text class="t" x="902" y="542">Reliability report</text>
+  <text class="s" x="902" y="560">facts gathered from the trace, then</text>
+  <text class="s" x="902" y="576">a 0-100 score, a grade, strengths and</text>
+  <text class="s" x="902" y="592">weaknesses, and the puzzle's own</text>
+  <text class="s" x="902" y="608">completion criteria, checked one by one</text>
+
+  <rect class="box" x="884" y="642" width="336" height="60" fill="#12151d" stroke="#313949"/>
+  <text class="t" x="902" y="664">Web Audio SFX</text>
+  <text class="s" x="902" y="682">synthesised at runtime, no audio assets</text>
+
+  <!-- ============ Edges ============ -->
+  <!-- definitions -> store -->
+  <path class="edge" d="M 316 306 L 316 362 L 374 362"/>
+  <!-- UI <-> store -->
+  <path class="edge" d="M 606 306 L 606 330"/>
+  <!-- store -> engine -->
+  <path class="edge" d="M 606 388 L 606 448"/>
+  <!-- engine internals -->
+  <path class="edge" d="M 500 502 L 500 506"/>
+  <path class="edge" d="M 712 502 L 712 506"/>
+  <path class="edge" d="M 500 556 L 500 560"/>
+  <path class="edge" d="M 712 556 L 712 560"/>
+  <!-- human gate <-> dialog -->
+  <path class="edge" d="M 814 588 L 856 588 L 856 259 L 820 259"/>
+  <!-- engine -> providers -->
+  <path class="edge" d="M 606 674 L 606 734"/>
+  <!-- live -> mock fallback -->
+  <path class="edgeDim" d="M 398 826 L 356 826 L 356 764 L 392 764"/>
+  <!-- engine -> trace -->
+  <path class="edge" d="M 832 478 L 878 466"/>
+  <!-- trace -> report -->
+  <path class="edge" d="M 1052 504 L 1052 514"/>
+  <!-- engine -> canvas (live status) -->
+  <path class="edge" d="M 380 478 L 350 478 L 350 151 L 392 151"/>
+</svg>
